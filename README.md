@@ -1,6 +1,7 @@
 # PortScanner
 Advanced Port Scanner In Python
-`--------------------------------------------------------------------------------`
+
+`-----------------------------------------------------------------------------------------------------------`
                                        **WARNING**
 **THIS PROGRAM WAS MADE FOR EDUCATIONAL PURPOSES ONLY, WE ARE NOT RESPONSIBLE FOR ANY MISUSE OR ILLICIT ACTIVITIES
 
