@@ -66,37 +66,73 @@ def start_scan(ip_entry, start_port_entry, end_port_entry, output_field):
     monitor_results()
 
 
+def toggle_dark_mode(root, widgets, is_dark_mode):
+    if not is_dark_mode[0]:
+        root.configure(bg="black")
+        for widget in widgets:
+            widget.configure(bg="black")
+            if isinstance(widget, (Label, Button)):
+                widget.configure(fg="lime")
+            elif isinstance(widget, (Entry, Text)):
+                widget.configure(fg="lime", insertbackground="lime")
+        is_dark_mode[0] = True
+    else:
+        root.configure(bg="white")
+        for widget in widgets:
+            widget.configure(bg="white")
+            if isinstance(widget, (Label, Button)):
+                widget.configure(fg="black")
+            elif isinstance(widget, (Entry, Text)):
+                widget.configure(fg="black", insertbackground="black")
+        is_dark_mode[0] = False
+
+
 def create_gui():
     root = Tk()
     root.title("Advanced Port Scanner")
-    root.geometry("600x400")
+    root.geometry("800x600")
 
-    Label(root, text="Target IP Address:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+    is_dark_mode = [False]
+
+    label_ip = Label(root, text="Target IP Address:")
     ip_entry = Entry(root, width=30)
-    ip_entry.grid(row=0, column=1, padx=10, pady=10, columnspan=2)
-
-    Label(root, text="Start Port:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+    label_start_port = Label(root, text="Start Port:")
     start_port_entry = Entry(root, width=10)
-    start_port_entry.grid(row=1, column=1, padx=10, pady=10, sticky="w")
-
-    Label(root, text="End Port:").grid(row=1, column=2, padx=10, pady=10, sticky="w")
+    label_end_port = Label(root, text="End Port:")
     end_port_entry = Entry(root, width=10)
-    end_port_entry.grid(row=1, column=3, padx=10, pady=10, sticky="w")
-
-    Label(root, text="Scan Results:").grid(row=2, column=0, padx=10, pady=10, sticky="nw")
+    label_results = Label(root, text="Scan Results:")
     output_field = Text(root, height=15, width=70, wrap="word")
-    output_field.grid(row=2, column=1, columnspan=3, padx=10, pady=10)
-
     scrollbar = Scrollbar(root, command=output_field.yview)
     output_field.configure(yscrollcommand=scrollbar.set)
-    scrollbar.grid(row=2, column=4, sticky="ns")
+    start_button = Button(
+        root,
+        text="Start Scan",
+        command=lambda: start_scan(ip_entry, start_port_entry, end_port_entry, output_field),
+    )
+    toggle_button = Button(
+        root,
+        text="Toggle Dark Mode",
+        command=lambda: toggle_dark_mode(
+            root,
+            [label_ip, ip_entry, label_start_port, start_port_entry, label_end_port, end_port_entry, label_results, output_field, start_button, toggle_button],
+            is_dark_mode,
+        ),
+    )
 
-    Button(root, text="Start Scan", command=lambda: start_scan(ip_entry, start_port_entry, end_port_entry, output_field)).grid(row=3, column=1, columnspan=2, pady=20)
+    label_ip.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+    ip_entry.grid(row=0, column=1, padx=10, pady=10, columnspan=2)
+    label_start_port.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+    start_port_entry.grid(row=1, column=1, padx=10, pady=10, sticky="w")
+    label_end_port.grid(row=1, column=2, padx=10, pady=10, sticky="w")
+    end_port_entry.grid(row=1, column=3, padx=10, pady=10, sticky="w")
+    label_results.grid(row=2, column=0, padx=10, pady=10, sticky="nw")
+    output_field.grid(row=2, column=1, columnspan=3, padx=10, pady=10)
+    scrollbar.grid(row=2, column=4, sticky="ns")
+    start_button.grid(row=3, column=1, columnspan=2, pady=20)
+    toggle_button.grid(row=4, column=1, columnspan=2, pady=10)
 
     root.mainloop()
 
 
 if __name__ == "__main__":
     create_gui()
-
-#Have Fun :)
