@@ -76,6 +76,8 @@ python main.py
 *Ports that cannot be scanned due to network issues or permissions are logged as errors in the results.*
 
 
+*P.S: It also has a Hakr Mode >:)*
+
 `--------------------------------------------------------------------------------------------------------------`
 
 
