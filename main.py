@@ -111,7 +111,7 @@ def create_gui():
     )
     toggle_button = Button(
         root,
-        text="Toggle Dark Mode",
+        text="Toggle Hakr Mode",
         command=lambda: toggle_dark_mode(
             root,
             [label_ip, ip_entry, label_start_port, start_port_entry, label_end_port, end_port_entry, label_results, output_field, start_button, toggle_button],
