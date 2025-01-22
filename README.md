@@ -12,16 +12,17 @@ Advanced Port Scanner In Python
 `-----------------------------------------------------------------------------------------------------------`
 
 
-***Steps to Run the Program:***
-
-**Run the Script:**
-
-*Open a terminal or command prompt, navigate to the file location, and run it using:*
-
+***Installation***
 ```bash
+git clone https://github.com/nullsleeps/PortScanner.git
+cd PortScanner
 python main.py
 ```
 
+
+***Steps to Run the Program:***
+
+**How To Use:**
 
 **Input Target Information:**
 
