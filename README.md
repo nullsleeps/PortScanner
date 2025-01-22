@@ -50,7 +50,7 @@ python main.py
 
 *The program uses the* ***socket*** *library to attempt to connect to each port in the specified range on the target IP.*
 
-*If a connection is successful, the port is marked as* `"open."`
+*If a connection is successful, the port is marked as* `"open".`
 
 *Each port is scanned in a separate thread, significantly speeding up the process.*
 
